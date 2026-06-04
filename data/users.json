@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "Admin123",
+    "role": "administrator",
+    "name": "Administrator"
+  },
+  {
+    "id": 2,
+    "username": "doctor1",
+    "password": "Doctor123",
+    "role": "clinician",
+    "name": "Klinitsist"
+  },
+  {
+    "id": 3,
+    "username": "reception1",
+    "password": "Reception123",
+    "role": "receptionist",
+    "name": "Qabulxona xodimi"
+  }
+]
