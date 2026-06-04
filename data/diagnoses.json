@@ -1,0 +1,34 @@
+[
+  {
+    "id": 2,
+    "icd": "E11",
+    "description": "2-toifa qandli diabet",
+    "severity": "Yuqori",
+    "patientId": 2,
+    "createdAt": "2026-04-28T14:30:00Z"
+  },
+  {
+    "id": 3,
+    "icd": "L40",
+    "description": "Psoriaz kasalligi",
+    "severity": "Past",
+    "patientId": 3,
+    "createdAt": "2026-03-22T11:20:00Z"
+  },
+  {
+    "id": 4,
+    "icd": "M17",
+    "description": "Tizza bo‘g‘imlaridagi artroz",
+    "severity": "O'rta",
+    "patientId": 4,
+    "createdAt": "2026-05-01T16:10:00Z"
+  },
+  {
+    "id": 5,
+    "icd": "J02",
+    "description": "Faringit va tomoq og‘rig‘i",
+    "severity": "Past",
+    "patientId": 5,
+    "createdAt": "2026-05-19T09:15:00Z"
+  }
+]

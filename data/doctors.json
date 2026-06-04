@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Nilufar Jalilova",
+    "specialty": "Kardiologiya",
+    "department": "Kardiologiya",
+    "phone": "+998 71 123 45 67",
+    "email": "nilufar.jalilova@caretrack.uz"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Diyor Rustamov",
+    "specialty": "Nevrologiya",
+    "department": "Nevrologiya",
+    "phone": "+998 71 234 56 78",
+    "email": "diyor.rustamov@caretrack.uz"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Dilshodaxon Karimova",
+    "specialty": "Dermatologiya",
+    "department": "Dermatologiya",
+    "phone": "+998 71 345 67 89",
+    "email": "dilshodaxon.karimova@caretrack.uz"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Botirbek Qodirov",
+    "specialty": "Ortopediya",
+    "department": "Ortopediya",
+    "phone": "+998 71 456 78 90",
+    "email": "botirbek.qodirov@caretrack.uz"
+  },
+  {
+    "id": 5,
+    "name": "Dr. Sanjar Sodiqov",
+    "specialty": "Umumiy amaliyot",
+    "department": "Umumiy amaliyot",
+    "phone": "+998 71 567 89 01",
+    "email": "sanjar.sodiqov@caretrack.uz"
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "id": 2,
+    "name": "Jamshid Tursunov",
+    "phone": "+998 90 234 56 78",
+    "address": "Toshkent shahri, Chilonzor tumani",
+    "doctorId": 2
+  },
+  {
+    "id": 3,
+    "name": "Nilufar Omonova",
+    "phone": "+998 91 345 67 89",
+    "address": "Toshkent shahri, Shayxontohur tumani",
+    "doctorId": 3
+  },
+  {
+    "id": 4,
+    "name": "Farhod Ismoilov",
+    "phone": "+998 93 456 78 90",
+    "address": "Farg'ona shahri, Toshloq ko'chasi",
+    "doctorId": 4
+  },
+  {
+    "id": 5,
+    "name": "Malika Mirzaeva",
+    "phone": "+998 94 567 89 01",
+    "address": "Namangan shahri, Bog'ishamol",
+    "doctorId": 5
+  },
+  {
+    "id": 6,
+    "name": "Maruf Sadullayev",
+    "phone": "998252326",
+    "address": "Toshkent shahri, Yunusobod tumani",
+    "doctorId": 3
+  },
+  {
+    "id": 7,
+    "name": "Muhammadamin Sa'diyev",
+    "phone": "943992326",
+    "address": "Fargona viloyati Quva tumani",
+    "doctorId": 4,
+    "appointmentDate": "2026-06-11",
+    "appointmentTime": "12:13"
+  },
+  {
+    "id": 8,
+    "name": "Shoxrux Jo'rayev",
+    "phone": "951231015",
+    "address": "Toshken viloyati",
+    "doctorId": 4,
+    "appointmentDate": "2026-06-12",
+    "appointmentTime": "12:14"
+  }
+]
