@@ -348,7 +348,12 @@ const refreshData = async () => {
 };
 
 navItems.forEach(item => {
-  item.addEventListener('click', () => setActiveSection(item.dataset.section));
+  item.addEventListener('click', () => {
+    setActiveSection(item.dataset.section);
+    if (isMobileLayout()) {
+      dashboardShell.classList.add('collapsed');
+    }
+  });
 });
 
 const toggleSidebar = () => {
@@ -356,6 +361,17 @@ const toggleSidebar = () => {
 };
 
 sidebarToggle?.addEventListener('click', toggleSidebar);
+
+const isMobileLayout = () => window.matchMedia('(max-width: 1040px)').matches;
+
+const setResponsiveSidebarState = () => {
+  if (isMobileLayout()) {
+    dashboardShell.classList.add('collapsed');
+  }
+};
+
+setResponsiveSidebarState();
+window.addEventListener('resize', setResponsiveSidebarState);
 
 if (reloadBtn) {
   reloadBtn.addEventListener('click', refreshData);
