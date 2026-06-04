@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareTrack Clinic - Kirish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="page-shell login-shell">
+    <section class="login-panel glass-card">
+      <div class="brand-block">
+        <span class="brand-badge">CareTrack</span>
+        <h1>TYBT tizimiga xush kelibsiz</h1>
+        <p>Shifokorlar, qabulxona va administratorlar uchun zamonaviy klinik boshqaruv.</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label for="username">Foydalanuvchi nomi</label>
+        <input id="username" name="username" type="text" placeholder="admin" autocomplete="username" required />
+
+        <label for="password">Parol</label>
+        <input id="password" name="password" type="password" placeholder="Admin123" autocomplete="current-password" required />
+
+        <button class="btn btn-primary" type="submit">Kirish</button>
+        <div class="helper-text">
+          <strong>Admin:</strong> admin / Admin123<br />
+          <strong>Klinitsist:</strong> doctor1 / Doctor123<br />
+          <strong>Qabulxona:</strong> reception1 / Reception123
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="js/auth.js"></script>
+</body>
+</html>

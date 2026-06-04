@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareTrack Clinic - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <button id="sidebarToggle" class="sidebar-toggle" aria-label="Sidebar menyusini ochish yoki yopish">
+      <span class="sidebar-toggle-icon">‹</span>
+    </button>
+    <aside id="sidebar" class="sidebar glass-card">
+      <div class="sidebar-brand">
+        <div>
+          <span class="brand-badge">CareTrack</span>
+          <p>TYBT Boshqaruv Paneli</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-section="overview">Dashboard</button>
+        <button class="nav-item" data-section="patients">Bemorlar</button>
+        <button class="nav-item" data-section="doctors">Shifokorlar</button>
+        <button class="nav-item" data-section="diagnoses">Tashxislar</button>
+        <button class="nav-item" data-section="profile">Profil</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-ghost">Chiqish</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-content">
+      <header class="dashboard-header glass-card">
+        <div>
+          <p id="welcomeText">Salom, <span class="text-accent">Bemor</span></p>
+          <small id="roleLabel">Rol: Administrator</small>
+        </div>
+        <div class="header-actions">
+          <button id="reloadBtn" type="button" class="btn btn-secondary">Yangilash</button>
+        </div>
+      </header>
+
+      <section id="overview" class="section-grid active">
+        <div class="grid-panel cards-grid">
+          <article class="stat-card card-gradient-blue">
+            <p>Shifokorlar</p>
+            <h2 id="doctorsCount">0</h2>
+          </article>
+          <article class="stat-card card-gradient-green">
+            <p>Bemorlar</p>
+            <h2 id="patientsCount">0</h2>
+          </article>
+          <article class="stat-card card-gradient-violet">
+            <p>Tashxislar</p>
+            <h2 id="diagnosesCount">0</h2>
+          </article>
+          <article class="stat-card card-gradient-soft">
+            <p>Og‘irlik darajasi</p>
+            <div class="severity-list" id="severitySummary"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="patients" class="section-grid hidden">
+        <div class="panel-head">
+          <div>
+            <h2>Bemorlar ro‘yxati</h2>
+            <p>Shifokor, telefon yoki manzil bo‘yicha qidiruv</p>
+          </div>
+          <div class="action-row">
+            <input id="patientSearch" type="search" placeholder="Bemor yoki telefon qidirish" />
+            <select id="patientDoctorFilter">
+              <option value="">Barcha shifokorlar</option>
+            </select>
+            <button id="newPatientBtn" class="btn btn-primary">Yangi bemor</button>
+          </div>
+        </div>
+        <div class="split-grid">
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr><th>Ism</th><th>Telefon</th><th>Shifokor</th><th>Sana</th><th>Soat</th><th>Manzil</th></tr>
+              </thead>
+              <tbody id="patientTable"></tbody>
+            </table>
+          </div>
+          <aside class="detail-panel glass-card" id="patientDetailPanel">
+            <h3>Bemor profili</h3>
+            <p class="detail-note">Jadvaldan bemorni tanlang, profil uning barcha ma'lumotlarini hamda tashxis tarixini ko'rsatadi.</p>
+            <div class="detail-group">
+              <p><strong>Ism:</strong> <span id="detailName">-</span></p>
+              <p><strong>Telefon:</strong> <span id="detailPhone">-</span></p>
+              <p><strong>Manzil:</strong> <span id="detailAddress">-</span></p>
+              <p><strong>Shifokor:</strong> <span id="detailDoctor">-</span></p>
+              <p><strong>Qabul sanasi:</strong> <span id="detailAppointmentDate">-</span></p>
+              <p><strong>Qabul vaqti:</strong> <span id="detailAppointmentTime">-</span></p>
+            </div>
+            <div class="detail-actions">
+              <button id="editPatientBtn" class="btn btn-secondary">Ma'lumotni yangilash</button>
+              <button id="deletePatientBtn" class="btn btn-danger">Bemorni o‘chirish</button>
+            </div>
+            <div class="detail-group">
+              <h4>Tashxislar</h4>
+              <ul id="detailDiagnosisList" class="detail-list"></ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="doctors" class="section-grid hidden">
+        <div class="panel-head">
+          <div>
+            <h2>Shifokorlar</h2>
+            <p>Mutaxassislik va bo‘lim bo‘yicha qidiruv</p>
+          </div>
+          <div class="action-row">
+            <input id="doctorSearch" type="search" placeholder="Shifokor yoki mutaxassislik" />
+            <select id="doctorDepartmentFilter">
+              <option value="">Barcha bo‘limlar</option>
+              <option>Kardiologiya</option>
+              <option>Nevrologiya</option>
+              <option>Dermatologiya</option>
+              <option>Ortopediya</option>
+              <option>Umumiy amaliyot</option>
+            </select>
+            <button id="newDoctorBtn" class="btn btn-primary hidden">Yangi shifokor</button>
+          </div>
+        </div>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr><th>Ism</th><th>Mutaxassislik</th><th>Bo‘lim</th><th>Aloqa</th><th>Harakatlar</th></tr>
+            </thead>
+            <tbody id="doctorTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="modal hidden" id="doctorModal">
+        <div class="modal-header">
+          <h3 id="doctorModalTitle">Yangi shifokor qo‘shish</h3>
+          <button class="btn btn-icon" data-close>&times;</button>
+        </div>
+        <form id="doctorForm" class="modal-form">
+          <label>Ism</label><input name="name" required />
+          <label>Mutaxassislik</label><input name="specialty" required />
+          <label>Bo‘lim</label><input name="department" required />
+          <label>Telefon</label><input name="phone" required />
+          <label>Email</label><input name="email" type="email" />
+          <button class="btn btn-primary" type="submit">Saqlash</button>
+        </form>
+      </div>
+
+      <section id="diagnoses" class="section-grid hidden">
+        <div class="panel-head">
+          <div>
+            <h2>Tashxislar</h2>
+            <p>ICD kod, bemor yoki og‘irlik bo‘yicha filtrlash</p>
+          </div>
+          <div class="action-row">
+            <input id="diagnosisSearch" type="search" placeholder="ICD kodi yoki tavsif" />
+            <select id="diagnosisSeverityFilter">
+              <option value="">Barcha darajalar</option>
+              <option>Past</option>
+              <option>O'rta</option>
+              <option>Yuqori</option>
+            </select>
+            <button id="newDiagnosisBtn" class="btn btn-primary">Yangi tashxis</button>
+          </div>
+        </div>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr><th>Bemor</th><th>ICD</th><th>Tavsiya</th><th>Daraja</th><th>Harakatlar</th></tr>
+            </thead>
+            <tbody id="diagnosisTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="profile" class="section-grid hidden">
+        <div class="profile-panel glass-card">
+          <div class="profile-card">
+            <h2>Shaxsiy ma'lumotlar</h2>
+            <p><strong>Ism:</strong> <span id="profileName">...</span></p>
+            <p><strong>Rol:</strong> <span id="profileRole">...</span></p>
+            <p><strong>Token:</strong> <span class="small-text">Maxfiy, faqat saqlash uchun</span></p>
+          </div>
+          <div class="profile-card">
+            <h2>Foydalanish qoidalari</h2>
+            <ul>
+              <li>Administratorlar to‘liq boshqaradi.</li>
+              <li>Klinitsistlar bemor va tashxislarni tekshiradi va yangilaydi.</li>
+              <li>Qabulxona xodimi yangi bemor qo‘shadi va shifokorlarni ko‘radi.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-layer hidden" id="modalLayer"></div>
+
+  <div class="modal hidden" id="patientModal">
+    <div class="modal-header">
+      <h3 id="patientModalTitle">Yangi bemor qo‘shish</h3>
+      <button class="btn btn-icon" data-close>&times;</button>
+    </div>
+    <form id="patientForm" class="modal-form">
+      <label>Ism</label><input name="name" required />
+      <label>Telefon</label><input name="phone" required />
+      <label>Manzil</label><input name="address" required />
+      <label>Qabul sanasi</label><input name="appointmentDate" type="date" required />
+      <label>Qabul vaqti</label><input name="appointmentTime" type="time" required />
+      <label>Shifokor</label>
+      <select name="doctorId" required id="patientDoctorSelect"></select>
+      <button class="btn btn-primary" type="submit">Saqlash</button>
+    </form>
+  </div>
+
+  <div class="modal hidden" id="diagnosisModal">
+    <div class="modal-header">
+      <h3 id="diagnosisModalTitle">Yangi tashxis qo‘shish</h3>
+      <button class="btn btn-icon" data-close>&times;</button>
+    </div>
+    <form id="diagnosisForm" class="modal-form">
+      <label>ICD kodi</label><input name="icd" required />
+      <label>Tavsiya/ta'rif</label><textarea name="description" rows="3" required></textarea>
+      <label>Og‘irlik darajasi</label>
+      <select name="severity" required>
+        <option value="">Tanlang</option>
+        <option>Past</option>
+        <option>O'rta</option>
+        <option>Yuqori</option>
+      </select>
+      <label>Bemor</label>
+      <select name="patientId" required id="diagnosisPatientSelect"></select>
+      <button class="btn btn-primary" type="submit">Saqlash</button>
+    </form>
+  </div>
+
+  <div class="modal hidden" id="confirmModal">
+    <div class="modal-header">
+      <h3>Tasdiqlash kerak</h3>
+      <button class="btn btn-icon" data-close>&times;</button>
+    </div>
+    <div class="modal-form confirm-modal-body">
+      <p id="confirmMessage" class="confirm-message">Siz rostdan ham davom ettirmoqchimisiz?</p>
+      <div class="confirm-buttons">
+        <button id="confirmNoBtn" class="btn btn-secondary" type="button">Bekor qilish</button>
+        <button id="confirmYesBtn" class="btn btn-danger" type="button">Ha, o‘chir</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
